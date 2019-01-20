@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Scanner;
+
 public class ScannerExamples {
 
 	public static void main(String[] args) {
@@ -9,22 +11,29 @@ public class ScannerExamples {
 		 * 
 		 * How can we do each of these steps?
 		 */
+
+		
 		
 		/*
 		 * To read user input from the command line, we can use a Scanner, which
 		 * we need to pass the System.in inputStream.  
 		 */
 		/* ADD CODE TO CREATE A SCANNER AND ASK THE USER THEIR NAME */
-
+		// We created a variable for scanner
+		 // Then we tell it to hold the scanner
+		  // take away - to use scanner, you need the following code and "import java.util.Scanner;"
+		Scanner in = new Scanner(System.in);
+		System.out.println("What is your name?");
 		
 		/* 
 		 * We use the Scanner nextLine() method to get the input from the user as
 		 * a String.  This gets all values the user types up until and including the Enter/Return.
 		 */
 		/* ADD CODE TO GET THE USERS NAME AND DISPLAY IT */
-
+		String username = in.nextLine();
+		System.out.println("You said your name is " + username);
 		
-		
+		    //Then we ran: "run java application"
 		/*
 		 * We can also use other methods of scanner like nextInt() to get input from the user
 		 * and have it automatically parsed to that datatype.  This will not include the Enter/Return
@@ -34,13 +43,18 @@ public class ScannerExamples {
 		 * see an Exception.
 		 */
 		/* ADD CODE TO GET THE NEXT USERS NUMBER AND DISPLAY IT */
-
-		
+		// This does not enter a return for the user
+		System.out.print("Enter a number: ");
+		int userNumber = in.nextInt();
+		// Ignores enter
+		in.nextLine();
+		//print out number
+		System.out.println("Your number is " + userNumber);
 		
 		// We can also get a number as a String and then parse it using the desired datatypes parse function
 		/* ADD CODE TO GET THE USER DOLLAR AMOUNT */
-
-		
+		System.out.print("Enter a dollar amount:");
+		String dollarString = in.nextLine();
 		
 		/*
 		 * We convert the string by calling the parse method on the datatype we wish to convert.  The string must only contain
@@ -54,10 +68,13 @@ public class ScannerExamples {
 		 *
 		 */
 		/* ADD CODE TO PARSE THE USER ENTERED DOUBLE */
-
+		// takes string and parses it into double
+		double amount = Double.parseDouble(dollarString);
+		double tax = .075;
+		double total = amount + (amount * tax);
 
 		/* ADD CODE TO ADD TAX TO THE AMOUNT AND DISPLAY IT */
-
+		System.out.println("Your total is " + total);
 		
 		/*
 		 * If you want to display formatted values we can use the printf function with a formatter.
@@ -84,7 +101,30 @@ public class ScannerExamples {
 		 *	Book        $12.77  $0.08  $13.73 
 		 * 	Record      $5.76  $0.43  $6.19 
 		 */
+		System.out.println();
+		// the following pads spaces, with the "-" it pads them to right, without "-" prints to the left
+		System.out.printf("%-10s", "Item");
+		System.out.printf("  %-2s", "Price");
+		System.out.printf("  %-2s", "Tax");
+		System.out.printf("  %-2s", "Total");
+		System.out.println("\n---------------------------------");
 		
+		// the following pads spaces, with the "-" it pads them to right, without "-" prints to the left
+		System.out.printf("%-10s", "Book");
+		System.out.printf("  $%-4.2f ", amount);
+		System.out.printf("  $%-4.2f ", tax);
+		System.out.printf("  $%-4.2f ", total);
+
+		System.out.println();
+		System.out.printf("%-10s", "Record");
+		System.out.printf("  $%4.2f ", 5.76);
+		System.out.printf("  $%4.2f ", 0.43);
+		System.out.printf("  $%4.2f ", 6.19);
+		
+		// Different types of output are available
+		// We have to create format
+		// Format starts with a sign
+		//System.out.printf("%4.2f", total);
 		
 		
 	}
