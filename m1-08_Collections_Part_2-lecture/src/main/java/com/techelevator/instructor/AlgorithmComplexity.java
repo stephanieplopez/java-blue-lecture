@@ -35,7 +35,8 @@ public class AlgorithmComplexity {
 	    return array[array.length - 1] % 2 == 0;
 	}
 	
-	/* O(n) - Linear Complexity
+	/* O(n) - Linear Complexity (Simple Search)
+	 * Always has to check each element in the array
 	 * doubling the problem size also doubles the number of operations required..
 	 */
 	public static boolean doesArrayContain10(int[] array) {
@@ -79,7 +80,7 @@ public class AlgorithmComplexity {
 	public static int Fibonacci(int number)
 	{
 	    if (number <= 1) return number;
-
+	    
 	    return Fibonacci(number - 2) + Fibonacci(number - 1);
 	}
 
