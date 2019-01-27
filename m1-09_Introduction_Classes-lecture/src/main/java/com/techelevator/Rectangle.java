@@ -67,7 +67,7 @@ public class Rectangle {
 		this.width = Math.abs(width);
 	}
 	/*
-	 * A derived propery is not stored, it is calculated
+	 * A derived property is not stored, it is calculated
 	 */
 	
 	
