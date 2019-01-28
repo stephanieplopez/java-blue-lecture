@@ -13,6 +13,8 @@ public class ReserveAuction extends Auction {
 	 * @param description the description of the auction
 	 * @param reservePrice the minimum sale price
 	 */
+	// calls super auction itemsForSale
+	// calls it's own respective reservePrice
 	public ReserveAuction(String itemForSale, int reservePrice) {
 		super(itemForSale);
 		this.reservePrice = reservePrice;

@@ -9,6 +9,7 @@ public class Auction {
 	private Bid currentHighBid;
 	private List<Bid> allBids;
 
+	//Super class
 	public Auction(String itemForSale) {
 		this.itemForSale = itemForSale;
 		this.currentHighBid = new Bid("", 0);
@@ -16,10 +17,13 @@ public class Auction {
 	}
 	
 	public boolean placeBid(Bid offeredBid) {
+		// put in a list of all the bids
 		allBids.add(offeredBid);
 		boolean isCurrentWinningBid = false;
+		// is the offered big higher than the currentHighBid
 		if(offeredBid.getBidAmount() > currentHighBid.getBidAmount()) {
 			currentHighBid = offeredBid;
+			// if it is the highest bid
 			isCurrentWinningBid = true;
 		}
 		return isCurrentWinningBid;
