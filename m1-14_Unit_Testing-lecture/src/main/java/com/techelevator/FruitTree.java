@@ -8,7 +8,7 @@ public class FruitTree {
     public FruitTree(String typeOfFruit, int startingPiecesOfFruit) {
         this.piecesOfFruitLeft = startingPiecesOfFruit;
         this.typeOfFruit = typeOfFruit;
-    }
+    } 
 
     public String getTypeOfFruit() {
         return typeOfFruit;

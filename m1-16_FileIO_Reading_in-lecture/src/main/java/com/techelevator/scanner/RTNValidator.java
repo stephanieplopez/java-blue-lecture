@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class RTNValidator {
 	
 	private static final int[] CHECKSUM_WEIGHTS = new int[] { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
-
+	
+	// Passing it to the JVM
 	public static void main(String[] args) throws FileNotFoundException {
 
 		printApplicationBanner();
 		
 		File inputFile = getInputFileFromUser();
 		try(Scanner fileScanner = new Scanner(inputFile)) {
+			// While the '.hasNextLine' tells us when the end of the file occurs
 			while(fileScanner.hasNextLine()) {
 				String line = fileScanner.nextLine();
 				String rtn = line.substring(0, 9);
@@ -32,6 +34,7 @@ public class RTNValidator {
 		System.out.println();
 	}
 
+	// the only time we want a suppressed warning etc, is when we KNOW we don't want those warnings
 	@SuppressWarnings("resource")
 	private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);

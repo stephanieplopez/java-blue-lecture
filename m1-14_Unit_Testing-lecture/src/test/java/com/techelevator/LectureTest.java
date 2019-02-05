@@ -42,7 +42,7 @@ public class LectureTest {
 	 * between words instead of camelCase. This is my own personal convention and 
 	 * should not be construed as a general standard or convention. You can also
 	 * use camelCase for test method names. You should follow the norm at whatever
-	 * development organization you join.
+	 * development organization you join. 
 	 * 
 	 * Regardless of whether you use camelCase or underscores, your method names 
 	 * should be very descriptive to the point of being overly verbose. This is fine

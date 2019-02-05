@@ -43,7 +43,7 @@ public class PaintCalc {
 				
 				// for each one of these
 				for (Rectangle wall : walls) {
-					totalArea += walls.getArea();
+//					totalArea += walls.getArea();
 					System.out.println("Wall " + count + ": " + wall);
 					count++;
 				}

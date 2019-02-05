@@ -8,10 +8,9 @@ public class Lecture {
 	// Return type here is returning an array instead of a single integer
     public int[] returnArray() {
         int[] array = {80,8080,443};
-<<<<<<< HEAD
+        
         // Changed to return array variable
-=======
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
         return array;
     }
 
@@ -20,10 +19,9 @@ public class Lecture {
     */
     public int returnFirstElement() {
         int[] portNumbers = {80,8080,443};
-<<<<<<< HEAD
+
         // Asking for FIRST element (or index) of array
-=======
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
         return portNumbers[0];
     }
 
@@ -31,25 +29,20 @@ public class Lecture {
     3. Return the last element of the array
     */
     public int returnLastElement() {
-<<<<<<< HEAD
         int[] portNumbers = {80,8080,443};
         // Use length to quickly return LAST array
         return portNumbers[portNumbers.length - 1];
-=======
-        int[] portNumbers = {80,8080,443 };
-        return portNumbers[2];
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
+//        int[] portNumbers = {80,8080,443 };
+//        return portNumbers[2];
     }
 
     /*
     4. Return the first element of the array from the parameters
     */
     public int returnFirstElementOfParam(int[] passedInArray) {
-<<<<<<< HEAD
     	// We know there is int, and that it is an array, nothing else
     	// We always know the first element
-=======
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
         return passedInArray[0];
     }
 
@@ -57,36 +50,33 @@ public class Lecture {
     5. Return the last element of the array from the parameters
     */
     public int returnLastElementOfParam(int[] passedInArray) {
-<<<<<<< HEAD
     	// Same here, do not know the length
         return passedInArray[passedInArray.length - 1];
-=======
-        return passedInArray[ passedInArray.length - 1 ];
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+        
+//        return passedInArray[ passedInArray.length - 1 ];
     }
     
     /*
     6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to return it? There are a couple of different ways of doing this, what can you come up with?
     */
     public int returnVariableFromBlock(int number) {
-<<<<<<< HEAD
     	int result;
         { // A new block with scoped variables
           // Change scope of block and change where the variable is defined
           // Variable does not HAVE to be defined and declared in the  
         	
             result = number * 5;
-=======
     	
         { // A new block with scoped variables
 
             number = number * 5;
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
 
         } // the result variable disappears here
 
         return result; // We want to return result here. How?
-    }
+        }
+   }
 
     /*
     7. What will the variable result be at the end of the method? Change the number in the logic expression so that it returns true.
@@ -149,11 +139,10 @@ public class Lecture {
         int counter = 0;
 
         //     Start;       Keep going while         Increment by one;
-<<<<<<< HEAD
+
         // i was i = 1, it must start at 0 to count ALL items
         // i might start at 1 because there is a header
-=======
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
         for(int i = 0; i < arrayToLoopThrough.length; i++) {
             counter += 1;
         }
@@ -171,11 +160,11 @@ public class Lecture {
         
         // Or for(int i = 0; i < arrayToLoopThrough.length; i++) {
         //     Start;       Keep going while         Increment by one;
-<<<<<<< HEAD
-        for(int i = 0; i <= arrayToLoopThrough.length - 1; i++) {
-=======
+
+//        for(int i = 0; i <= arrayToLoopThrough.length - 1; i++) {
+
         for(int i = 0; i < arrayToLoopThrough.length; i++) {
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
             counter = counter + 1;
         }
 

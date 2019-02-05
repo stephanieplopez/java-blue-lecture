@@ -1,9 +1,10 @@
 package com.techelevator.farm;
 
-public class Cow extends FarmAnimal {
+// A cow is a farmAnimal and implements Sellable
+public class Cow extends FarmAnimal implements Sellable {
 
 	public Cow() {
-		super("Cow", "moo!");
+		super("Cow", "moo!", 1500);
 	}
 
 }

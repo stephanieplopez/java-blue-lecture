@@ -6,11 +6,9 @@ public class Lecture {
     it so that it returns something other than a 1.
     */
     public int returnNotOne() {
-<<<<<<< HEAD
         return 2;
-=======
-        return 1 + 1;
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
+//        return 1 + 1;
     }
 
     /*
@@ -18,23 +16,19 @@ public class Lecture {
     it so that it returns something other than a 0.5.
     */
     public double returnNotHalf() {
-<<<<<<< HEAD
+
         double notHalf = 0.6;
     	return 0.6;
-=======
-    	double notHalf = 0.6;
-        return notHalf;
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
+
+//    	double notHalf = 0.6;
+//        return notHalf;
+
     }
 
     /*
     3. This method needs to return a String. Fix it to return a valid String.
     */
     public String returnName() {
-<<<<<<< HEAD
-    	
-=======
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
         return "null";
     }
 
@@ -50,13 +44,8 @@ public class Lecture {
     it so that it does that.
     */
     public String returnNameOfLanguage() {
-<<<<<<< HEAD
-        String nameOfLanguage = "Java";
-    	return nameOfLanguage;
-=======
     	String nameOfLangauge = "Java";
         return nameOfLangauge;
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
     }
 
     /*
@@ -67,7 +56,6 @@ public class Lecture {
         if(true) {
             return true;
         }
-
         return false;
     }
 
@@ -79,7 +67,6 @@ public class Lecture {
         if(1 == 1) {
             return true;
         }
-
         return false;
     }
 
@@ -126,17 +113,10 @@ public class Lecture {
     11. Write an if statement that returns "Fizz" if the parameter is 3 and returns an empty String for anything else.
     */
     public String returnFizzIfThree(int number) {
-<<<<<<< HEAD
-    	if(number == 3) {
-    		return "Fizz";
-    	}
-    	return "";
-=======
     	if (number == 3) {
     		return "Fizz";
     	}
         return "";
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
     }
 
     /*
@@ -150,7 +130,6 @@ public class Lecture {
     13. Write an if/else statement that returns "Fizz" if the parameter is 3, "Buzz" if the parameter is 5 and an empty String for anything else.
     */
     public String returnFizzOrBuzzOrNothing(int number) {
-<<<<<<< HEAD
         if (number == 3) {
         	return "Fizz";
         } else if (number == 5) {
@@ -158,17 +137,6 @@ public class Lecture {
         } else {
         	return "";
         }
-=======
-        
-    	if (number == 3) {
-    		return "Fizz";
-    	} else if (number == 5) {
-    		return "Buzz";
-    	} else {
-    		return "";
-    	}
-    	
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
     }
 
     /*
@@ -186,11 +154,7 @@ public class Lecture {
     15. Now, do it again with a different boolean opeation.
     */
     public String returnAdultOrMinorAgain(int number) {
-<<<<<<< HEAD
-        if(number > 17) {    //if (!(number < 18)
-=======
         if(number > 17) {   //if (!(number < 18)
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
             return "Adult";
         } else {
             return "Minor";
@@ -203,11 +167,7 @@ public class Lecture {
     public String returnAdultOrMinorOrTeen(int number) {            
         if(number >= 18) {
             return "Adult";
-<<<<<<< HEAD
-        } else if(number >= 13 && number <=17) {
-=======
         } else if(number >= 13 && number <= 17) {
->>>>>>> fe13f0ac0b1e5845593d85c7f21857ae2b116e9c
             return "Teen";
         } else {
             return "Minor";
