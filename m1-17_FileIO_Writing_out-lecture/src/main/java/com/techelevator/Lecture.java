@@ -17,11 +17,12 @@ public class Lecture {
 		 * 
 		 * One benefit is that it compensates for differences in Windows and Unix use of '/' and '\' as directory delimiters.
 		 * 
-		 * A new instance of File can be created from a String that contains a file system path 
+		 * A new instance of File can be created from a String that contains a file system path *****
 		 */
 		
 		System.out.print("Enter the path of a file or directory >>> ");
 		String path = userInput.nextLine();
+		// path to file
 		File f = new File(path);
 
 		/* 
@@ -34,6 +35,7 @@ public class Lecture {
 		
 		System.out.println();
 		if(f.exists()) { // returns true if a file or directory exists at the file system location, otherwise returns false
+			// fu
 			System.out.println("name: "+f.getName());
 			System.out.println("absolutePath: "+f.getAbsolutePath());
 			if(f.isDirectory()) {
@@ -80,6 +82,7 @@ public class Lecture {
 		System.out.println("Now let's put a file in the directory.");
 		System.out.print("Enter a name for the new file >>> ");
 		String fileName = userInput.nextLine();
+		// References newDirectory and puts file in directory
 		File newFile = new File(newDirectory, fileName);
 		
 		newFile.createNewFile();
@@ -98,7 +101,9 @@ public class Lecture {
 		System.out.print("Enter a message to be stored in the new file >>> ");
 		String message = userInput.nextLine();
 		
+		// Using the try outside of the PrintWriter, closes it so that it doesn't continue to be open
 		try(PrintWriter writer = new PrintWriter(newFile)) {
+			// Code can be put in to have code repeated 
 			writer.println(message);
 		} // When we exit the try block, this cause the file to be closed and an automatic flush of the buffer to trigger
 		
