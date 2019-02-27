@@ -32,6 +32,7 @@
 		<c:forEach begin="1" end="${param.number}" var="num">
 			<c:choose>
 				<c:when test="${num % 2 == 0}">
+				
 					<c:set var="cssClass" value="red" />
 				</c:when>
 				<c:when test="${num % 3 == 0}">
