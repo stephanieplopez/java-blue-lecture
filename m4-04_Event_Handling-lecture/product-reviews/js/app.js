@@ -41,7 +41,7 @@ function displayReviews() {
 }
 
 /**
- *
+ * Displays a review that has just been saved
  * @param {Object} review The review to display
  */
 function displayReview(review) {
@@ -60,12 +60,70 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// set the product reviews page title
-setPageTitle();
-// set the product reviews page description
-setPageDescription();
-// display all of the product reviews on our page
-displayReviews();
+
+// 1. We are adding an eventListener above the root
+// 2. (what we care about (eventType), how the event is going to be handled(eventHandler))
+// -> Need a function to call back
+// 3. Building the handler
+// 4. Moved the functions into the handler
+document.addEventListener('DOMContentLoaded', () => {
+  // set the product reviews page title
+  setPageTitle();
+  // set the product reviews page description
+  setPageDescription();
+  // display all of the product reviews on our page
+  displayReviews();
+
+  // 5. Create reference to tag
+  const desc = document.querySelector('.description');
+  // 6. Once we have the node referenced, we can 'select' it
+  // 7. Now we create eventHandler
+  desc.addEventListener('click', (event) => {
+    // 8. We pass it our reference of event and call the .target (what has just happened)
+    toggleDescriptionEdit(event.target);
+    // 9. We need to create two 'escape' conditions 
+    // 10. First we find out reference by checking DOM of page
+  });
+
+  const inputDesc = document.getElementById('inputDesc');
+  // 11. Figure out what event to add. We use keyup because we want to know when the key is 'released'
+  inputDesc.addEventListener('keyup', (event) => {
+    //12. If statement to check if key has been pressed down and released
+    if (event.key === 'Enter') {
+      // 13. Call function to set event.target to true (save) when Enter is released (contains node that was 'affected')
+      exitDescriptionEdit(event.target, true);
+    }
+    if (event.key === 'Escape') {
+      // 14. Call function to set event.target to false, not save when Escape is released
+      exitDescriptionEdit(event.target, false);
+    }
+  });  
+
+  // 15. Add another eventListener for when the mouse moves from textarea, it 'deactivates the textbox'
+  inputDesc.addEventListener('mouseleave', (e) => {
+    exitDescriptionEdit(e.target, false);
+  });
+  
+  //16. Create reference for button add review (btnToggleForm)
+  const btnToggleForm = document.getElementById('btnToggleForm');
+  //17. We don't need an event argument, because of how the DOM is written
+  btnToggleForm.addEventListener('click', () => {
+    showHideForm();
+  });
+
+  // 18. Create reference for button save review (btnSaveReview)
+  const btnSaveReview = document.getElementById('btnSaveReview');
+  // 19. Now we create eventHandler
+  btnSaveReview.addEventListener('click', (event) => {
+  // 20. We are going to prevent it's default action from happening
+    event.preventDefault(); // Stop a controls default action
+  // Stops the capture/bubble event propagation -- Wherever we are in the process
+  //event.stopPropagation();
+    // 25. Review is saved 
+    saveReview();
+  });
+
+});
 
 /**
  * Take an event on the description and swap out the description for a text box.
@@ -75,8 +133,11 @@ displayReviews();
 function toggleDescriptionEdit(desc) {
   const textBox = desc.nextElementSibling;
   textBox.value = description;
+  // Removes the CSS class applied
   textBox.classList.remove('d-none');
+  // Adds the CSS class to desc (the paragraph)
   desc.classList.add('d-none');
+  // Allows for object to be accessible to the User
   textBox.focus();
 }
 
@@ -103,11 +164,16 @@ function showHideForm() {
   const form = document.querySelector('form');
   const btn = document.getElementById('btnToggleForm');
 
+  // If statement to check if user can or can't see the form
   if (form.classList.contains('d-none')) {
+    // Shows form to user
     form.classList.remove('d-none');
+    // Changes text on button
     btn.innerText = 'Hide Form';
+    // Puts the cursor to the name textbox using focus
     document.getElementById('name').focus();
   } else {
+    // Clears the text in the form
     resetFormValues();
     form.classList.add('d-none');
     btn.innerText = 'Add Review';
@@ -129,5 +195,26 @@ function resetFormValues() {
 
 /**
  * I will save the review that was added using the add review from
+ * Build the review, save the review
  */
-function saveReview() {}
+function saveReview() {
+  // 21. Check the IDs for the form and create their references so we can access them
+  const name = document.getElementById('name');
+  const title = document.getElementById('title');
+  const rating = document.getElementById('rating');
+  const review = document.getElementById('review');
+
+  // 22. Build a new object definition for a newReview
+  // 23. On form fields we get values, so when the user has typed in values into the form, using the
+  // --  key values pairs to access the review
+  const newReview = {
+  reviewer: name.value,
+  title: title.value,
+  review: review.value,
+  rating: rating.value,
+  }
+  // 24. Store object created in array
+  reviews.push(newReview);
+  displayReview(newReview);
+  showHideForm();
+}

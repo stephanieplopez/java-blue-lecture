@@ -26,6 +26,10 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+  function multiplyTogether(firstParameter, secondParameter) {
+    return firstParameter * secondParameter;
+  }
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -35,6 +39,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+  function multiplyNoUndefined(firstParameter = 0, secondParameter = 0) {
+    return firstParameter * secondParameter;
+  }
 
 /**
  * Scope is defined as where a variable is available to be used.
@@ -59,12 +66,25 @@ function scopeTest() {
   }
 }
 
+/**
+ * Take the details of a person and create an English readable sentence that uses
+ * the provided information, seperated by the defined seperator, or the default seperator ','
+ * 
+ * @param {string} name the name of the person being described 
+ * @param {number} age the age of the person
+ * @param {string[]} [listOfQuirks] a list of funny quirks 
+ * @param {string} [separator = ', '] the string used to seperate the quirks
+ * @returns {string} the combined descriptive string
+ */
+
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
 }
 
 /**
+ * Reduce documentation
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
  * Takes an array and, using the power of anonymous functions, generates
  * their sum.
  *
@@ -72,8 +92,62 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce((sum, number) => {
+    return sum + number;  
+  });
 }
+
+/*
+* Older, but clearer, anonymous function Syntax, runs exactly as above
+*/
+
+function sumAllNumbers(numbersToSum) {
+  return numbersToSum.reduce(function (sum, number) {
+    return sum + number;  
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* A manual way to Reduce without an anonymouse function
+
+ */
+
+
+function sumAllNumbers(numbersToSum) {
+  let sum = 0;
+  for (let i = 0; i < numbersToSum.length; i++) {
+    sum += numbersToSum[i];
+  }
+  return sum;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -83,4 +157,46 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter((number) => {
+    if (number % 3 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+
+/* Either is correct 
+*/
+
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter( (number) => {
+      return number % 3 == 0;
+  });
+}
+
+/*
+Map Example
+*/
+
+function addLetterToNumbers(arrayOfNumbers) {
+  let newArray = arrayOfNumbers.map((number) => {
+      return "A" + number;
+  });
+  return newArray;
+  }
+
+/* Chaining Methods Filter and Map
+*/
+
+function addSecondVersionLetterToNumbers(arrayOfNumbers) {
+  let newArray = arrayOfNumbers.filter( (number) => {
+      return number % 2 === 0
+  }).map((number) => {
+    return "A" + number;  
+    });
+  return newArray;
+  }
+m

@@ -20,6 +20,8 @@ section {
     height: 10%;
     margin: 0px;
 }
+
+/* Puts it inline-block and doesn't push them down */
 .square {
     border: 1px dotted black;
     width: 10%;
@@ -40,7 +42,7 @@ section {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
+/* Sprites */
 .pirate {
     background-image: url('/img/flag-on-waves.jpg');
     background-size: 100% 100%;
