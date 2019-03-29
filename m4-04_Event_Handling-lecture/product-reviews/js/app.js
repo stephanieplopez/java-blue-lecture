@@ -61,11 +61,14 @@ function displayReview(review) {
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
 
+<<<<<<< HEAD
 // 1. We are adding an eventListener above the root
 // 2. (what we care about (eventType), how the event is going to be handled(eventHandler))
 // -> Need a function to call back
 // 3. Building the handler
 // 4. Moved the functions into the handler
+=======
+>>>>>>> 8b78e057775d418691169d51503e72c097c95e20
 document.addEventListener('DOMContentLoaded', () => {
   // set the product reviews page title
   setPageTitle();
@@ -74,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // display all of the product reviews on our page
   displayReviews();
 
+<<<<<<< HEAD
   // 5. Create reference to tag
   const desc = document.querySelector('.description');
   // 6. Once we have the node referenced, we can 'select' it
@@ -107,10 +111,33 @@ document.addEventListener('DOMContentLoaded', () => {
   //16. Create reference for button add review (btnToggleForm)
   const btnToggleForm = document.getElementById('btnToggleForm');
   //17. We don't need an event argument, because of how the DOM is written
+=======
+  const desc = document.querySelector('.description');
+  desc.addEventListener('click', (event) => {
+    toggleDescriptionEdit(event.target);
+  });
+
+  const inputDesc = document.getElementById('inputDesc');
+  inputDesc.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      exitDescriptionEdit(event.target, true);
+    }
+    if (event.key === 'Escape') {
+      exitDescriptionEdit(event.target, false);
+    }
+  });
+
+  inputDesc.addEventListener('mouseleave', (e) => {
+    exitDescriptionEdit(e.target, false);
+  });
+
+  const btnToggleForm = document.getElementById('btnToggleForm');
+>>>>>>> 8b78e057775d418691169d51503e72c097c95e20
   btnToggleForm.addEventListener('click', () => {
     showHideForm();
   });
 
+<<<<<<< HEAD
   // 18. Create reference for button save review (btnSaveReview)
   const btnSaveReview = document.getElementById('btnSaveReview');
   // 19. Now we create eventHandler
@@ -120,6 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Stops the capture/bubble event propagation -- Wherever we are in the process
   //event.stopPropagation();
     // 25. Review is saved 
+=======
+  const btnSaveReview = document.getElementById('btnSaveReview');
+  btnSaveReview.addEventListener('click', (event) => {
+    event.preventDefault();  // Stop a controls default action
+    //event.stopPropagation();  // Stops the capture/bubble event propagation
+>>>>>>> 8b78e057775d418691169d51503e72c097c95e20
     saveReview();
   });
 
@@ -198,12 +231,16 @@ function resetFormValues() {
  * Build the review, save the review
  */
 function saveReview() {
+<<<<<<< HEAD
   // 21. Check the IDs for the form and create their references so we can access them
+=======
+>>>>>>> 8b78e057775d418691169d51503e72c097c95e20
   const name = document.getElementById('name');
   const title = document.getElementById('title');
   const rating = document.getElementById('rating');
   const review = document.getElementById('review');
 
+<<<<<<< HEAD
   // 22. Build a new object definition for a newReview
   // 23. On form fields we get values, so when the user has typed in values into the form, using the
   // --  key values pairs to access the review
@@ -214,6 +251,14 @@ function saveReview() {
   rating: rating.value,
   }
   // 24. Store object created in array
+=======
+  const newReview =  {
+    reviewer: name.value,
+    title: title.value,
+    review: review.value,
+    rating: rating.value
+  }
+>>>>>>> 8b78e057775d418691169d51503e72c097c95e20
   reviews.push(newReview);
   displayReview(newReview);
   showHideForm();
