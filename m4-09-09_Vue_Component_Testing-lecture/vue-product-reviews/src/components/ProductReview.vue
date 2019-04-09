@@ -114,6 +114,9 @@ export default {
     },
     computed: {
         averageRating(vm) {
+            if(vm.reviews.length === 0) {
+                return 0;
+            }
             let sum = vm.reviews.reduce( (currentSum, review) => {
                 return currentSum + review.rating;
             }, 0);

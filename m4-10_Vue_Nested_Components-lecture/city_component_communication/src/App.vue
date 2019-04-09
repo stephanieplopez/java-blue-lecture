@@ -8,7 +8,7 @@
                to be shown.
     -->
     <city-detail  v-if="Object.keys(citySelection).length > 0" 
-      v-bind:city="citySelection" 
+      v-bind:city="citySelection" 2
       v-on:show-all-cities="citySelection = {}"></city-detail>
     <!-- The City Component defintion (show the City List)
         v-if   - Only show this component when the citySelection component is empty (has NO keys)
@@ -17,6 +17,7 @@
         v-on   - event handler for "city-selected".  It calls the handleCitySelection method and by
                  default passes it the event object, which is the selectedCity. 
     -->
+    <!-- v-if: is this cityObject empty (it checks keys) -->
     <city v-if="Object.keys(citySelection).length === 0" 
       v-bind:cities="cityList" 
       v-on:city-selected="handleCitySelection"></city>
@@ -109,6 +110,7 @@ export default {
       /*
       * The method that will handle the city-selected event.  It uses the city object passed in
       * the event, selectedCity, and sets it to the citySelection variable in this component.
+      * Therefore passing entire OBJECT.
       */
       handleCitySelection(selectedCity) {
         this.citySelection = selectedCity;

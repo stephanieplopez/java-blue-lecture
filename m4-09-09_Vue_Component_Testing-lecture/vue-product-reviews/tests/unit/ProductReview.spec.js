@@ -3,6 +3,7 @@ import ProductReview from '@/components/ProductReview.vue';
 import { shallowMount, Wrapper } from '@vue/test-utils';
 
 import chai from 'chai';
+// Loading the file to start processing it with the interpreter
 chai.should();
 
 describe('ProductReview', () => {
@@ -164,6 +165,38 @@ describe('ProductReview', () => {
         wrapper.vm.numberOfReviews([], 1).should.equal(0);
         wrapper.vm.numberOfReviews([], 5).should.equal(0);
       });
+      
+      /* 
+      * This test is only to show a chai assert and is a duplicate of a test above.
+      */
+      it('should return a proper count of reviews', () => {
+        const testReviews = [
+          {
+            reviewer: 'TEST1',
+            rating: 1
+          },
+          {
+            reviewer: 'TEST2',
+            rating: 3
+          },
+          {
+            reviewer: 'TEST3',
+            rating: 2
+          },
+          {
+            reviewer: 'TEST4',
+            rating: 3
+          }
+        ];
+
+        /*
+        * Works, but using Chai's Should/Expects chain is preferred
+        */
+
+        let count = wrapper.vm.numberOfReviews(testReviews, 3)
+        // expected, then actual
+        chai.assert(2, count)
+      });
     });
   });
 
@@ -203,6 +236,83 @@ describe('ProductReview', () => {
       }
     ];
 
+    // We need a test for each of the Computed Properties, regardless of how similar they are
+    // and that they are getters. We are testing how each computed property is reacting
+    // Creating a test
+    it('should return only count of one star reviews from numberOfOneStarReviews', () => {
+      // Set the data - curly brackets are required because it defines a JavaScript object
+      wrapper.setData( { reviews: testReviews } );
+      // We use vm to access data object -- 
+      wrapper.vm.numberOfOneStarReviews.should.equal(1);
+    });
+
+    it('should return only count of two star reviews from numberOfTwoStarReviews', () => {
+      wrapper.setData( { reviews: testReviews } );
+      wrapper.vm.numberOfTwoStarReviews.should.equal(2);
+    });
+
+    it('should return only count of three star reviews from numberOfThreeStarReviews', () => {
+      wrapper.setData( { reviews: testReviews } );
+      wrapper.vm.numberOfThreeStarReviews.should.equal(3);
+    });
+
+    it('should return only count of four star reviews from numberOfFourStarReviews', () => {
+      wrapper.setData( { reviews: testReviews } );
+      wrapper.vm.numberOfFourStarReviews.should.equal(0);
+    });
+
+    it('should return only count of five star reviews from numberOfFiveStarReviews', () => {
+      wrapper.setData( { reviews: testReviews } );
+      wrapper.vm.numberOfFiveStarReviews.should.equal(2);
+    });
+
+    // Test: Filtered Reviews -- we will need to use the values we populated above
+
+    it('should have only filtered reviews in filteredReviews', () => {
+      wrapper.setData(
+        {
+          reviews: testReviews,
+          filter: 2
+        }
+      );
+      wrapper.vm.filteredReviews.length.should.equal(2);
+      wrapper.vm.filteredReviews[0].reviewer.should.equal('TEST3');
+      wrapper.vm.filteredReviews[1].reviewer.should.equal('TEST5');
+    });
     
+    // Test: What happens if the filter is set to zero 
+    it('should have all reviews in filteredReviews when filter is zero', () => {
+      wrapper.setData({reviews: testReviews, filter: 0});
+      wrapper.vm.filteredReviews.length.should.equal(8);
+    });
+
+    // Test: computed values of ratings. Good to sometimes keep values seperate, we are creating a new 
+    it('should have average review total in averageRating', () => {
+      wrapper.setData(
+        {
+          // Array of objects
+          reviews: [
+            {
+              reviewer: 'TEST1',
+              rating: 1
+            },
+            {
+              reviewer: 'TEST2',
+              rating: 5
+            }
+          ]
+        }
+      );
+      wrapper.vm.averageRating.should.equal(3);
+    });
+
+    // Test: What happens to average rating if there are not reviews?
+    it('should have zero for averageRating if no reviews', () => {
+      wrapper.setData({ reviews: [] });
+      wrapper.vm.averageRating.should.equal(0);
+    });
+
+
+
   });
 });

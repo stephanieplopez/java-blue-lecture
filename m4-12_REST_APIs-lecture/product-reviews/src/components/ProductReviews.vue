@@ -43,7 +43,20 @@ export default {
       this.$emit('editReview',id)
     },
     deleteReview(id) {
-
+      fetch(`${this.apiURL}/${id}`, {
+            method: 'DELETE',
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          .then( response => {
+              if (response.ok) {
+                const index = this.reviews.map(review => review.id).indexOf(id);
+                // Removes from the array and everything updates because the page is reactive
+                this.reviews.slice(index, 1);
+              }
+          })
+          .catch( err => console.error(err));
     },
     formatDate(d) {
       let current_datetime = new Date(d)
@@ -51,7 +64,13 @@ export default {
     }
   },
   created() {
-
+    fetch(this.apiURL)
+      .then(( response) => {
+        return response.json();
+      }).then ( reviews => {
+        this.reviews = reviews;
+      })
+      .catch( err => console.error(err));
   }
 };
 </script>

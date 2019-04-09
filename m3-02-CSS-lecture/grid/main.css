@@ -84,6 +84,7 @@
     /* Main Layout */
     main {
       display: flex;
+      flex-direction: row;
     }
 
     main img {

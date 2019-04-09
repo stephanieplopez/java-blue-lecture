@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <!-- Goes here because it's the App.vue's job to load the button -->
+    <button v-if="cityList.legth === 0" 
+    v-on:click="handleLoadCities"> Load Cities </button>
     <!-- The City Detail Component definition  (Shows a single City)
       v-if   - Only show this component when the citySelection component is NOT empty (has keys)
       v-bind - bind the CityDetail city prop to the citySelection data element of this component
@@ -112,6 +115,19 @@ export default {
       */
       handleCitySelection(selectedCity) {
         this.citySelection = selectedCity;
+      },
+      handleLoadCities() {
+        console.log("Load Cities...");
+
+        fetch('city.json')
+          .then( response => {
+            return response.json();
+          })
+          .then( data => {
+            // Need to update the DOM by populating the cities
+            this.cityList = data;
+          })
+          .catch( err => console.error(err));
       }
     }
   }

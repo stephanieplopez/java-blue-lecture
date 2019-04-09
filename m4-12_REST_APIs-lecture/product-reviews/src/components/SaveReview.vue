@@ -45,10 +45,39 @@ export default {
       this.reviewID === 0 ? this.createReview() : this.updateReview();
     },
     createReview() {
-  
+      fetch(this.apiURL, {
+        method: 'POST',
+        // What our message should include
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // JSON respresentation of what we are sending (need to stringfy object)
+        body: JSON.stringify(this.review)
+      })
+        // Next we start coding promises
+        .then( ( response) => {
+          if(response.ok) {
+            // if response is returned okay -- the review will be emitted (shown)
+            this.$emit('showReviews');
+          }
+        })
+        .catch( err => console.error(err) );
     },
+    // Use PUT to update review
     updateReview() {
-
+      fetch(`${this.apiURL}/${this.reviewID}`, {
+              method: 'PUT',
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.review)
+              })
+              .then(response => {
+                if (response.ok) {
+                  this.$emit('showReviews');
+                }
+              })
+              .catch(err => console.error(err));
     }
   },
   computed: {
@@ -60,7 +89,16 @@ export default {
     }
   },
   created() {
-
+    if (this.reviewID != 0) {
+      fetch(this.apiURL + "/" + this.reviewID)
+        .then(( response) => {
+          return response.json();
+        })
+        .then( review => {
+          this.review = review;
+        })
+        .catch(err => console.err(err));
+    }
   }
 };
 </script>

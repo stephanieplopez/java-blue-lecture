@@ -92,8 +92,11 @@
 export default {
   name: "product-review",
   props: {
+    // Properties that this child component expects to be populated by Parent
     name: String,
-    description: String
+    description: String,
+    // Created a new attribute that we can use on this component
+    filterText: String
   },
   data() {
     return {
@@ -114,8 +117,14 @@ export default {
       return sum / vm.reviews.length;
     },
     filteredReviews(vm) {
-      return vm.reviews.filter(review => {
+      const reviewsFilteredByRating = vm.reviews.filter(review => {
         return vm.filter === 0 ? true : vm.filter === review.rating;
+      });
+
+      const reviewsFilteredByBoth = reviewsFilteredByRating.filter(reviewObj => {
+        
+        // Review is the object and inside the object we access
+        return reviewObj.review.includes(vm.filterText);
       });
     },
     numberOfOneStarReviews(vm) {

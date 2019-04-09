@@ -1,4 +1,5 @@
 <template>
+    <!-- On submit, uses custom event to handleFilter -->
     <form v-on:submit.prevent="handleFilter">
         <input type="text" placeholder="Filter on..." v-model="searchText"><button>Filter</button>
     </form>
@@ -14,7 +15,8 @@ export default {
     },
     methods: {
         handleFilter() {
-            
+            // Custom event, it can be anything, but it has to remain consitent moving forward
+            this.$emit('filter', this.searchText);
         }
     }
 }
